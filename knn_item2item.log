@@ -1,0 +1,1993 @@
+/Users/yetniek/pythonProject/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 1
+shrink = 0.0
+knn_method = item
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+/Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/data/dataset/dataset.py:648: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  feat[field].fillna(value=0, inplace=True)
+/Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/data/dataset/dataset.py:650: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
+
+For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  feat[field].fillna(value=feat[field].mean(), inplace=True)
+18 Oct 18:48    INFO  Saving filtered dataset into [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.17s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.08s, valid_score: 0.172300]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.1583    mrr@10 : 0.3151    ndcg@10 : 0.1723    hit@10 : 0.6511    precision@10 : 0.1185
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-02.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-02.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    39.80 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.29 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.1583), ('mrr@10', 0.3151), ('ndcg@10', 0.1723), ('hit@10', 0.6511), ('precision@10', 0.1185)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.1751), ('mrr@10', 0.3468), ('ndcg@10', 0.1976), ('hit@10', 0.6702), ('precision@10', 0.1369)])
+[run] ItemKNN_k1
+[run] ItemKNN_k5
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 5
+shrink = 0.0
+knn_method = item
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.07s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.09s, valid_score: 0.199100]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.1864    mrr@10 : 0.3485    ndcg@10 : 0.1991    hit@10 : 0.7147    precision@10 : 0.1375
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-04.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-04.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    37.30 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.21 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.1864), ('mrr@10', 0.3485), ('ndcg@10', 0.1991), ('hit@10', 0.7147), ('precision@10', 0.1375)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.2068), ('mrr@10', 0.4027), ('ndcg@10', 0.2322), ('hit@10', 0.7338), ('precision@10', 0.1592)])
+[run] ItemKNN_k10
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 10
+shrink = 0.0
+knn_method = item
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.07s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.11s, valid_score: 0.210800]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.1956    mrr@10 : 0.3638    ndcg@10 : 0.2108    hit@10 : 0.7147    precision@10 : 0.146
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-06.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-06.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    33.30 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.21 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.1956), ('mrr@10', 0.3638), ('ndcg@10', 0.2108), ('hit@10', 0.7147), ('precision@10', 0.146)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.2316), ('mrr@10', 0.424), ('ndcg@10', 0.2527), ('hit@10', 0.7741), ('precision@10', 0.1748)])
+[run] ItemKNN_k100
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 100
+shrink = 0.0
+knn_method = item
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.08s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.18s, valid_score: 0.221300]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.2058    mrr@10 : 0.3779    ndcg@10 : 0.2213    hit@10 : 0.7328    precision@10 : 0.1554
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-09.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-09.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    32.90 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.28 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.2058), ('mrr@10', 0.3779), ('ndcg@10', 0.2213), ('hit@10', 0.7328), ('precision@10', 0.1554)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.247), ('mrr@10', 0.4623), ('ndcg@10', 0.2834), ('hit@10', 0.7847), ('precision@10', 0.1931)])
+[run] ItemKNN_k500
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 500
+shrink = 0.0
+knn_method = item
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.08s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.26s, valid_score: 0.222400]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.2048    mrr@10 : 0.3771    ndcg@10 : 0.2224    hit@10 : 0.7306    precision@10 : 0.1499
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-12.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-12.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    35.40 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.27 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.2048), ('mrr@10', 0.3771), ('ndcg@10', 0.2224), ('hit@10', 0.7306), ('precision@10', 0.1499)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.2354), ('mrr@10', 0.4575), ('ndcg@10', 0.2744), ('hit@10', 0.7561), ('precision@10', 0.1807)])
+[run] UserKNN_k1
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 1
+shrink = 0.0
+knn_method = user
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.07s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.06s, valid_score: 0.106700]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.1188    mrr@10 : 0.1881    ndcg@10 : 0.1067    hit@10 : 0.5228    precision@10 : 0.0762
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-15.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-15.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    26.50 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.19 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.1188), ('mrr@10', 0.1881), ('ndcg@10', 0.1067), ('hit@10', 0.5228), ('precision@10', 0.0762)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.1157), ('mrr@10', 0.1845), ('ndcg@10', 0.105), ('hit@10', 0.5217), ('precision@10', 0.079)])
+[run] UserKNN_k5
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 5
+shrink = 0.0
+knn_method = user
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.09s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.11s, valid_score: 0.171700]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.1725    mrr@10 : 0.3027    ndcg@10 : 0.1717    hit@10 : 0.6723    precision@10 : 0.1158
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-16.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-16.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    31.70 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.18 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.1725), ('mrr@10', 0.3027), ('ndcg@10', 0.1717), ('hit@10', 0.6723), ('precision@10', 0.1158)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.1931), ('mrr@10', 0.3441), ('ndcg@10', 0.1993), ('hit@10', 0.7073), ('precision@10', 0.1353)])
+[run] UserKNN_k10
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 10
+shrink = 0.0
+knn_method = user
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.07s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.10s, valid_score: 0.201300]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.1953    mrr@10 : 0.3478    ndcg@10 : 0.2013    hit@10 : 0.7137    precision@10 : 0.1345
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-19.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-19.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    30.00 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.40 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.1953), ('mrr@10', 0.3478), ('ndcg@10', 0.2013), ('hit@10', 0.7137), ('precision@10', 0.1345)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.218), ('mrr@10', 0.3974), ('ndcg@10', 0.2373), ('hit@10', 0.7455), ('precision@10', 0.1597)])
+[run] UserKNN_k100
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 100
+shrink = 0.0
+knn_method = user
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.07s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.18s, valid_score: 0.234500]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.2102    mrr@10 : 0.3992    ndcg@10 : 0.2345    hit@10 : 0.7402    precision@10 : 0.1567
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-21.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-21.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    27.10 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.46 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.2102), ('mrr@10', 0.3992), ('ndcg@10', 0.2345), ('hit@10', 0.7402), ('precision@10', 0.1567)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.2442), ('mrr@10', 0.4834), ('ndcg@10', 0.2873), ('hit@10', 0.7805), ('precision@10', 0.1885)])
+[run] UserKNN_k500
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 500
+shrink = 0.0
+knn_method = user
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.07s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.25s, valid_score: 0.201200]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.1823    mrr@10 : 0.3552    ndcg@10 : 0.2012    hit@10 : 0.6861    precision@10 : 0.1328
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-24.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-24.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    42.70 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.31 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.1823), ('mrr@10', 0.3552), ('ndcg@10', 0.2012), ('hit@10', 0.6861), ('precision@10', 0.1328)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.2123), ('mrr@10', 0.4321), ('ndcg@10', 0.2472), ('hit@10', 0.7444), ('precision@10', 0.1619)])
+[run] SLIMElastic
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+alpha = 0.2
+l1_ratio = 0.02
+positive_only = True
+hide_item = True
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  SLIMElastic()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.12s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.21s, valid_score: 0.255300]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.2361    mrr@10 : 0.4214    ndcg@10 : 0.2553    hit@10 : 0.7731    precision@10 : 0.1743
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/SLIMElastic-Oct-18-2026_18-48-33.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/SLIMElastic-Oct-18-2026_18-48-33.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    25.70 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.20 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.2361), ('mrr@10', 0.4214), ('ndcg@10', 0.2553), ('hit@10', 0.7731), ('precision@10', 0.1743)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.275), ('mrr@10', 0.5231), ('ndcg@10', 0.3236), ('hit@10', 0.8123), ('precision@10', 0.2165)])
+[run] EASE
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+reg_weight = 250.0
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  EASE()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.10s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.13s, valid_score: 0.256300]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.2389    mrr@10 : 0.4201    ndcg@10 : 0.2563    hit@10 : 0.7847    precision@10 : 0.1755
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/EASE-Oct-18-2026_18-48-35.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/EASE-Oct-18-2026_18-48-35.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    32.50 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.26 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.2389), ('mrr@10', 0.4201), ('ndcg@10', 0.2563), ('hit@10', 0.7847), ('precision@10', 0.1755)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.2805), ('mrr@10', 0.5277), ('ndcg@10', 0.3295), ('hit@10', 0.8197), ('precision@10', 0.2206)])
+[run] ItemKNN_default
+18 Oct 18:48    WARNING  command line args [knn item2item] will not be used in RecBole
+18 Oct 18:48    INFO  ['run_experiments.py', 'knn', 'item2item']
+18 Oct 18:48    INFO  
+General Hyper Parameters:
+gpu_id = 0
+use_gpu = True
+seed = 2020
+state = INFO
+reproducibility = True
+data_path = /Users/yetniek/pythonProject/lib/python3.9/site-packages/recbole/config/../dataset_example/ml-100k
+checkpoint_dir = /Users/yetniek/pythonProject/RS_HW1/saved
+show_progress = False
+save_dataset = True
+dataset_save_path = None
+save_dataloaders = False
+dataloaders_save_path = None
+log_wandb = False
+
+Training Hyper Parameters:
+epochs = 300
+train_batch_size = 2048
+learner = adam
+learning_rate = 0.001
+train_neg_sample_args = {'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}
+eval_step = 1
+stopping_step = 10
+clip_grad_norm = None
+weight_decay = 0.0
+loss_decimal_place = 4
+
+Evaluation Hyper Parameters:
+eval_args = {'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}
+repeatable = False
+metrics = ['Recall', 'MRR', 'NDCG', 'Hit', 'Precision']
+topk = [10]
+valid_metric = NDCG@10
+valid_metric_bigger = True
+eval_batch_size = 4096
+metric_decimal_place = 4
+
+Dataset Hyper Parameters:
+field_separator = 	
+seq_separator =  
+USER_ID_FIELD = user_id
+ITEM_ID_FIELD = item_id
+RATING_FIELD = rating
+TIME_FIELD = timestamp
+seq_len = None
+LABEL_FIELD = label
+threshold = None
+NEG_PREFIX = neg_
+load_col = {'inter': ['user_id', 'item_id', 'rating', 'timestamp']}
+unload_col = None
+unused_col = None
+additional_feat_suffix = None
+rm_dup_inter = None
+val_interval = None
+filter_inter_by_user_or_item = True
+user_inter_num_interval = None
+item_inter_num_interval = None
+alias_of_user_id = None
+alias_of_item_id = None
+alias_of_entity_id = None
+alias_of_relation_id = None
+preload_weight = None
+normalize_field = None
+normalize_all = True
+ITEM_LIST_LENGTH_FIELD = item_length
+LIST_SUFFIX = _list
+MAX_ITEM_LIST_LENGTH = 50
+POSITION_FIELD = position_id
+HEAD_ENTITY_ID_FIELD = head_id
+TAIL_ENTITY_ID_FIELD = tail_id
+RELATION_ID_FIELD = relation_id
+ENTITY_ID_FIELD = entity_id
+kg_reverse_r = False
+entity_kg_num_interval = None
+relation_kg_num_interval = None
+benchmark_filename = None
+
+Other Hyper Parameters: 
+worker = 0
+wandb_project = recbole
+shuffle = True
+require_pow = False
+enable_amp = False
+enable_scaler = False
+transform = None
+k = 100
+shrink = 0.0
+knn_method = item
+numerical_features = []
+discretization = None
+MODEL_TYPE = ModelType.TRADITIONAL
+MODEL_INPUT_TYPE = InputType.POINTWISE
+eval_type = EvaluatorType.RANKING
+single_spec = True
+local_rank = 0
+device = cpu
+valid_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+test_neg_sample_args = {'distribution': 'uniform', 'sample_num': 'none'}
+
+
+18 Oct 18:48    INFO  Load filtered dataset from: [/Users/yetniek/pythonProject/RS_HW1/saved/ml-100k-Dataset.pth]
+18 Oct 18:48    INFO  ml-100k
+The number of users: 944
+Average actions of users: 106.04453870625663
+The number of items: 1683
+Average actions of items: 59.45303210463734
+The number of inters: 100000
+The sparsity of the dataset: 93.70575143257098%
+Remain Fields: ['user_id', 'item_id', 'rating', 'timestamp']
+18 Oct 18:48    INFO  [Training]: train_batch_size = [2048] train_neg_sample_args: [{'distribution': 'uniform', 'sample_num': 1, 'alpha': 1.0, 'dynamic': False, 'candidate_num': 0}]
+18 Oct 18:48    INFO  [Evaluation]: eval_batch_size = [4096] eval_args: [{'split': {'RS': [0.8, 0.1, 0.1]}, 'order': 'RO', 'group_by': 'user', 'mode': {'valid': 'full', 'test': 'full'}}]
+18 Oct 18:48    INFO  ItemKNN()
+Trainable parameters: 1
+18 Oct 18:48    INFO  FLOPs: 0.0
+18 Oct 18:48    INFO  epoch 0 training [time: 0.08s, train loss: 0.0000]
+18 Oct 18:48    INFO  epoch 0 evaluating [time: 0.21s, valid_score: 0.221300]
+18 Oct 18:48    INFO  valid result: 
+recall@10 : 0.2058    mrr@10 : 0.3779    ndcg@10 : 0.2213    hit@10 : 0.7328    precision@10 : 0.1554
+18 Oct 18:48    INFO  Saving current: /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-38.pth
+18 Oct 18:48    INFO  Loading model structure and parameters from /Users/yetniek/pythonProject/RS_HW1/saved/ItemKNN-Oct-18-2026_18-48-38.pth
+18 Oct 18:48    INFO  The running environment of this training is as follows:
++-------------+---------------+
+| Environment |     Usage     |
++=============+===============+
+| CPU         |    33.90 %    |
++-------------+---------------+
+| GPU         |   0.0 / 0.0   |
++-------------+---------------+
+| Memory      | 0.27 G/8.00 G |
++-------------+---------------+
+18 Oct 18:48    INFO  best valid : OrderedDict([('recall@10', 0.2058), ('mrr@10', 0.3779), ('ndcg@10', 0.2213), ('hit@10', 0.7328), ('precision@10', 0.1554)])
+18 Oct 18:48    INFO  test result: OrderedDict([('recall@10', 0.247), ('mrr@10', 0.4623), ('ndcg@10', 0.2834), ('hit@10', 0.7847), ('precision@10', 0.1931)])
+{
+  "ItemKNN_k1": {
+    "valid": {
+      "recall@10": 0.1583,
+      "mrr@10": 0.3151,
+      "ndcg@10": 0.1723,
+      "hit@10": 0.6511,
+      "precision@10": 0.1185
+    },
+    "test": {
+      "recall@10": 0.1751,
+      "mrr@10": 0.3468,
+      "ndcg@10": 0.1976,
+      "hit@10": 0.6702,
+      "precision@10": 0.1369
+    }
+  },
+  "ItemKNN_k5": {
+    "valid": {
+      "recall@10": 0.1864,
+      "mrr@10": 0.3485,
+      "ndcg@10": 0.1991,
+      "hit@10": 0.7147,
+      "precision@10": 0.1375
+    },
+    "test": {
+      "recall@10": 0.2068,
+      "mrr@10": 0.4027,
+      "ndcg@10": 0.2322,
+      "hit@10": 0.7338,
+      "precision@10": 0.1592
+    }
+  },
+  "ItemKNN_k10": {
+    "valid": {
+      "recall@10": 0.1956,
+      "mrr@10": 0.3638,
+      "ndcg@10": 0.2108,
+      "hit@10": 0.7147,
+      "precision@10": 0.146
+    },
+    "test": {
+      "recall@10": 0.2316,
+      "mrr@10": 0.424,
+      "ndcg@10": 0.2527,
+      "hit@10": 0.7741,
+      "precision@10": 0.1748
+    }
+  },
+  "ItemKNN_k100": {
+    "valid": {
+      "recall@10": 0.2058,
+      "mrr@10": 0.3779,
+      "ndcg@10": 0.2213,
+      "hit@10": 0.7328,
+      "precision@10": 0.1554
+    },
+    "test": {
+      "recall@10": 0.247,
+      "mrr@10": 0.4623,
+      "ndcg@10": 0.2834,
+      "hit@10": 0.7847,
+      "precision@10": 0.1931
+    }
+  },
+  "ItemKNN_k500": {
+    "valid": {
+      "recall@10": 0.2048,
+      "mrr@10": 0.3771,
+      "ndcg@10": 0.2224,
+      "hit@10": 0.7306,
+      "precision@10": 0.1499
+    },
+    "test": {
+      "recall@10": 0.2354,
+      "mrr@10": 0.4575,
+      "ndcg@10": 0.2744,
+      "hit@10": 0.7561,
+      "precision@10": 0.1807
+    }
+  },
+  "UserKNN_k1": {
+    "valid": {
+      "recall@10": 0.1188,
+      "mrr@10": 0.1881,
+      "ndcg@10": 0.1067,
+      "hit@10": 0.5228,
+      "precision@10": 0.0762
+    },
+    "test": {
+      "recall@10": 0.1157,
+      "mrr@10": 0.1845,
+      "ndcg@10": 0.105,
+      "hit@10": 0.5217,
+      "precision@10": 0.079
+    }
+  },
+  "UserKNN_k5": {
+    "valid": {
+      "recall@10": 0.1725,
+      "mrr@10": 0.3027,
+      "ndcg@10": 0.1717,
+      "hit@10": 0.6723,
+      "precision@10": 0.1158
+    },
+    "test": {
+      "recall@10": 0.1931,
+      "mrr@10": 0.3441,
+      "ndcg@10": 0.1993,
+      "hit@10": 0.7073,
+      "precision@10": 0.1353
+    }
+  },
+  "UserKNN_k10": {
+    "valid": {
+      "recall@10": 0.1953,
+      "mrr@10": 0.3478,
+      "ndcg@10": 0.2013,
+      "hit@10": 0.7137,
+      "precision@10": 0.1345
+    },
+    "test": {
+      "recall@10": 0.218,
+      "mrr@10": 0.3974,
+      "ndcg@10": 0.2373,
+      "hit@10": 0.7455,
+      "precision@10": 0.1597
+    }
+  },
+  "UserKNN_k100": {
+    "valid": {
+      "recall@10": 0.2102,
+      "mrr@10": 0.3992,
+      "ndcg@10": 0.2345,
+      "hit@10": 0.7402,
+      "precision@10": 0.1567
+    },
+    "test": {
+      "recall@10": 0.2442,
+      "mrr@10": 0.4834,
+      "ndcg@10": 0.2873,
+      "hit@10": 0.7805,
+      "precision@10": 0.1885
+    }
+  },
+  "UserKNN_k500": {
+    "valid": {
+      "recall@10": 0.1823,
+      "mrr@10": 0.3552,
+      "ndcg@10": 0.2012,
+      "hit@10": 0.6861,
+      "precision@10": 0.1328
+    },
+    "test": {
+      "recall@10": 0.2123,
+      "mrr@10": 0.4321,
+      "ndcg@10": 0.2472,
+      "hit@10": 0.7444,
+      "precision@10": 0.1619
+    }
+  },
+  "SLIMElastic": {
+    "valid": {
+      "recall@10": 0.2361,
+      "mrr@10": 0.4214,
+      "ndcg@10": 0.2553,
+      "hit@10": 0.7731,
+      "precision@10": 0.1743
+    },
+    "test": {
+      "recall@10": 0.275,
+      "mrr@10": 0.5231,
+      "ndcg@10": 0.3236,
+      "hit@10": 0.8123,
+      "precision@10": 0.2165
+    }
+  },
+  "EASE": {
+    "valid": {
+      "recall@10": 0.2389,
+      "mrr@10": 0.4201,
+      "ndcg@10": 0.2563,
+      "hit@10": 0.7847,
+      "precision@10": 0.1755
+    },
+    "test": {
+      "recall@10": 0.2805,
+      "mrr@10": 0.5277,
+      "ndcg@10": 0.3295,
+      "hit@10": 0.8197,
+      "precision@10": 0.2206
+    }
+  },
+  "ItemKNN_default": {
+    "valid": {
+      "recall@10": 0.2058,
+      "mrr@10": 0.3779,
+      "ndcg@10": 0.2213,
+      "hit@10": 0.7328,
+      "precision@10": 0.1554
+    },
+    "test": {
+      "recall@10": 0.247,
+      "mrr@10": 0.4623,
+      "ndcg@10": 0.2834,
+      "hit@10": 0.7847,
+      "precision@10": 0.1931
+    }
+  }
+}
